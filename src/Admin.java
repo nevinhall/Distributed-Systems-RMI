@@ -14,17 +14,14 @@ public class Admin   implements ManageHerosVillains {
 		super();
 		this.villainsToBeSent = villainsToBeSent;
 		
-		//for testing only needs to be delted
-		for(int i = 0; i < 5;i++) {
-			villainsToBeSent.add("simulatedFetchVillaintest"+i);
-		}
-		//******************************************
+	
 	}
  
 	
 	
 	@Override
 	public ArrayList<Object>  fetchVillain() throws RemoteException {
+		
 		return villainsToBeSent;
 	}
 
