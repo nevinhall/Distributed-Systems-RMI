@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class Admin  extends UnicastRemoteObject  implements ManageHerosVillains {
 
@@ -20,16 +21,19 @@ public class Admin  extends UnicastRemoteObject  implements ManageHerosVillains 
 	}
 
 	@Override
-	public void returnHero(Object hero, int i) throws IOException {
-		File destination = new File ("D://college 2019//College third year//semester one//Disturbted systems//common//saved-the-world-again//saved" +  i + ".ser");
-		FileOutputStream fileOut;
-		fileOut = new FileOutputStream(destination);
+	public void returnHero(ArrayList<Object> hero) throws IOException {
+		System.out.println("size of sent array is " + hero.size());
+		for(int i = 0; i < hero.size();i++) {
+			File destination = new File ("D://college 2019//College third year//semester one//Disturbted systems//common//saved-the-world-again//saved" +  i + ".ser");
+			FileOutputStream fileOut;
+			fileOut = new FileOutputStream(destination);
 
-		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(hero);
-		out.close();
-		fileOut.close();
-		System.out.printf("Serialized data succesfully \n");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(hero);
+			out.close();
+			fileOut.close();
+			System.out.printf("Serialized data succesfully \n");
+		}
 
 	}
 
