@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class Admin  extends UnicastRemoteObject  implements ManageHerosVillains {
+public class Admin   implements ManageHerosVillains {
 	private ArrayList<Object> villainsToBeSent;
 	
 	protected Admin(ArrayList<Object> villainsToBeSent) throws RemoteException {
