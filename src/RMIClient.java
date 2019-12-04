@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public class RMIClient {
 	public static void main(String args[]) throws NotBoundException, FileNotFoundException, IOException{
 		ArrayList<Object> recievedVillains = new ArrayList<Object>();
+		ArrayList<Object> convertedHeroes = new ArrayList<Object>();
+		
 		Registry registry = LocateRegistry.getRegistry(1097);
 		
 		ManageHerosVillains client = (ManageHerosVillains) registry.lookup("server");
@@ -21,7 +23,10 @@ public class RMIClient {
 			System.out.println("Villians sent from server is " + recievedVillains.get(i));
 		}
 		System.out.println("**********************************************************");
-		client.returnHero(recievedVillains);
+		
+		ReactID convertVillains =  new ReactID();
+		convertedHeroes = convertVillains.id(recievedVillains);
+		client.returnHero(convertedHeroes);
 
 
 	} 
